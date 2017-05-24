@@ -47,10 +47,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
         "post-install-cmd": [
-            "@symfony-scripts",
-            "php bin/console doctrine:database:drop --force",
-            "php bin/console doctrine:database:create",
-            "php bin/console doctrine:schema:update --force"
+            "@symfony-scripts"
         ],
         "post-update-cmd": [
             "@symfony-scripts"
