@@ -2,11 +2,11 @@
 parameters:
 
     # Database
-    database_host: ~
-    database_port: ~
-    database_name: ~
-    database_user: ~
-    database_password: ~
+    database_host: localhost
+    database_port: 3306
+    database_name: consilium
+    database_user: root
+    database_password: a7...
     database_path: '%kernel.root_dir%/../var/data/data.sqlite'
 
     # Mailer
