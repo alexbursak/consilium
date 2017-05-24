@@ -1,0 +1,12 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: null
+    database_port: null
+    database_name: null
+    database_user: null
+    database_password: null
+    database_path: '%kernel.root_dir%/../var/data/data.sqlite'
+    mailer_transport: gmail
+    mailer_user: localhost3301@gmail.com
+    mailer_password: a7l7e7x7
+    secret: ThisTokenIsNotSoSecretChangeIt
