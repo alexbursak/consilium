@@ -38,11 +38,10 @@ class SportActivity
     private $title;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="sets", type="string")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ActivityType", inversedBy="sportActivities")
+     * @ORM\JoinColumn(name="type", referencedColumnName="id")
      */
-    private $sets;
+    private $type;
 
     /**
      * @var int
@@ -50,6 +49,13 @@ class SportActivity
      * @ORM\Column(name="reps", type="integer")
      */
     private $reps;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sets", type="string")
+     */
+    private $sets;
 
     /**
      * @var float
@@ -82,6 +88,26 @@ class SportActivity
     public function setDay(Day $day)
     {
         $this->day = $day;
+
+        return $this;
+    }
+
+    /**
+     * @return \AppBundle\Entity\ActivityType
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param \AppBundle\Entity\ActivityType $type
+     *
+     * @return $this
+     */
+    public function setType(ActivityType $type)
+    {
+        $this->type = $type;
 
         return $this;
     }

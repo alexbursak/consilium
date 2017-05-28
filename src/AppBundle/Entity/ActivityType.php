@@ -7,9 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="days")
+ * @ORM\Table(name="activity_type")
  */
-class Day
+class ActivityType
 {
     /**
      * @ORM\Column(type="integer")
@@ -19,11 +19,9 @@ class Day
     private $id;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="name", type="datetime")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\SportActivity", mappedBy="type")
      */
-    private $date;
+    private $sportActivities;
 
     /**
      * @var string
@@ -31,11 +29,6 @@ class Day
      * @ORM\Column(name="note", type="string")
      */
     private $note;
-
-    /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\SportActivity", mappedBy="day")
-     */
-    private $sportActivities;
 
     public function __construct()
     {
@@ -48,26 +41,6 @@ class Day
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-
-    /**
-     * @param $date
-     *
-     * @return $this
-     */
-    public function setDate(\DateTime $date)
-    {
-        $this->date = $date;
-
-        return $this;
     }
 
     /**
@@ -112,6 +85,14 @@ class Day
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getSportActivities()
+    {
+        return $this->sportActivities->getValues();
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSportActivitiesByType($type)
     {
         return $this->sportActivities->getValues();
     }
