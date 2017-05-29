@@ -11,12 +11,12 @@ day_show:
 day_new:
     path:     /new
     defaults: { _controller: "ConsiliumBundle:Day:new" }
-    methods:  POST
+    methods:  [GET, POST]
 
 day_edit:
     path:     /{id}/edit
     defaults: { _controller: "ConsiliumBundle:Day:edit" }
-    methods:  PUT
+    methods:  [GET, POST, PUT]
 
 day_delete:
     path:     /{id}/delete
