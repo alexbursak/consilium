@@ -1,3 +1,7 @@
+consilium_day:
+    resource: "@ConsiliumBundle/Resources/config/routing/day.yml"
+    prefix:   /day
+
 consilium_homepage:
     path:     /
     defaults: { _controller: ConsiliumBundle:Default:index }
