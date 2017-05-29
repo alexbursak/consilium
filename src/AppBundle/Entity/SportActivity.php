@@ -64,6 +64,11 @@ class SportActivity
      */
     private $weight;
 
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
+
     /**
      * @return int
      */
