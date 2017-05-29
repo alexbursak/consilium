@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace ConsiliumBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,13 +22,6 @@ class SportActivity
      * @ORM\JoinColumn(name="day", referencedColumnName="id")
      */
     private $day;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date", type="datetime")
-     */
-    private $date;
 
     /**
      * @var string
@@ -53,7 +46,7 @@ class SportActivity
     /**
      * @var string
      *
-     * @ORM\Column(name="sets", type="string")
+     * @ORM\Column(name="sets", type="integer")
      */
     private $sets;
 
@@ -63,11 +56,6 @@ class SportActivity
      * @ORM\Column(name="weight", type="float")
      */
     private $weight;
-
-    public function __toString()
-    {
-        return $this->getTitle();
-    }
 
     /**
      * @return int
@@ -86,7 +74,7 @@ class SportActivity
     }
 
     /**
-     * @param \AppBundle\Entity\Day $day
+     * @param \ConsiliumBundle\Entity\Day $day
      *
      * @return $this
      */
@@ -98,7 +86,7 @@ class SportActivity
     }
 
     /**
-     * @return \AppBundle\Entity\ActivityType
+     * @return \ConsiliumBundle\Entity\Day
      */
     public function getType()
     {
@@ -106,33 +94,13 @@ class SportActivity
     }
 
     /**
-     * @param \AppBundle\Entity\ActivityType $type
+     * @param \ConsiliumBundle\Entity\ActivityType $type
      *
      * @return $this
      */
     public function setType(ActivityType $type)
     {
         $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-
-    /**
-     * @param \DateTime $date
-     *
-     * @return $this
-     */
-    public function setDate(\DateTime $date)
-    {
-        $this->date = $date;
 
         return $this;
     }
@@ -146,7 +114,7 @@ class SportActivity
     }
 
     /**
-     * @param $title
+     * @param string $title
      *
      * @return $this
      */
@@ -158,7 +126,7 @@ class SportActivity
     }
 
     /**
-     * @return string
+     * @return int
      */
     public function getSets()
     {
@@ -166,7 +134,7 @@ class SportActivity
     }
 
     /**
-     * @param $sets
+     * @param int $sets
      *
      * @return $this
      */
@@ -178,7 +146,7 @@ class SportActivity
     }
 
     /**
-     * @return string
+     * @return int
      */
     public function getReps()
     {
@@ -186,7 +154,7 @@ class SportActivity
     }
 
     /**
-     * @param $reps
+     * @param int $reps
      *
      * @return $this
      */
@@ -198,7 +166,7 @@ class SportActivity
     }
 
     /**
-     * @return string
+     * @return float
      */
     public function getWeight()
     {
@@ -206,7 +174,7 @@ class SportActivity
     }
 
     /**
-     * @param $weight
+     * @param float $weight
      *
      * @return $this
      */

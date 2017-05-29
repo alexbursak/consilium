@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace ConsiliumBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -52,7 +52,7 @@ class ActivityType
     }
 
     /**
-     * @param $note
+     * @param string $note
      *
      * @return $this
      */
@@ -64,7 +64,7 @@ class ActivityType
     }
 
     /**
-     * @param SportActivity $sportActivity
+     * @param \ConsiliumBundle\Entity\SportActivity $sportActivity
      *
      * @return $this
      */
@@ -75,7 +75,7 @@ class ActivityType
         return $this;
     }
     /**
-     * @param SportActivity $sportActivity
+     * @param \ConsiliumBundle\Entity\SportActivity $sportActivity
      */
     public function removeSportActivity(SportActivity $sportActivity)
     {
@@ -100,7 +100,7 @@ class ActivityType
     /**
      * @param string $type
      *
-     * @return null
+     * @return null|\ConsiliumBundle\Entity\SportActivity
      */
     public function getSportActivityByType($type)
     {

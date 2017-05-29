@@ -1,13 +1,13 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace ConsiliumBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Repository\DayRepository")
- * @ORM\Table(name="days")
+ * @ORM\Table(name="day")
  */
 class Day
 {
@@ -21,14 +21,14 @@ class Day
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="name", type="datetime")
+     * @ORM\Column(name="date", type="datetime", unique=true)
      */
     private $date;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="note", type="string")
+     * @ORM\Column(name="note", type="string", nullable=true)
      */
     private $note;
 
@@ -59,7 +59,7 @@ class Day
     }
 
     /**
-     * @param $date
+     * @param \DateTime $date
      *
      * @return $this
      */
@@ -79,7 +79,7 @@ class Day
     }
 
     /**
-     * @param $note
+     * @param string $note
      *
      * @return $this
      */
@@ -91,7 +91,7 @@ class Day
     }
 
     /**
-     * @param SportActivity $sportActivity
+     * @param \ConsiliumBundle\Entity\SportActivity $sportActivity
      *
      * @return $this
      */
@@ -102,7 +102,7 @@ class Day
         return $this;
     }
     /**
-     * @param SportActivity $sportActivity
+     * @param \ConsiliumBundle\Entity\SportActivity $sportActivity
      */
     public function removeSportActivity(SportActivity $sportActivity)
     {
@@ -119,7 +119,7 @@ class Day
     /**
      * @param string $type
      *
-     * @return null
+     * @return null|\ConsiliumBundle\Entity\SportActivity
      */
     public function getSportActivityByType($type)
     {
