@@ -3,6 +3,7 @@
 namespace ConsiliumBundle\Controller;
 
 use ConsiliumBundle\Entity\Day;
+use ConsiliumBundle\Validator\DayValidator;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,9 +21,7 @@ class DayController extends Controller
     {
         $days = $this->getDoctrine()->getRepository('ConsiliumBundle:Day')->findAll();
 
-        $response = $this->serializeJson($days);
-
-        return new Response($response);
+        return new Response($this->serializeJson($days));
     }
 
     /**
@@ -30,7 +29,29 @@ class DayController extends Controller
      */
     public function newAction(Request $request)
     {
-        return new JsonResponse('newAction');
+        $validator = new DayValidator($request->getContent());
+        $validator->validate();
+
+        if(!$validator->isValid()){
+            return new JsonResponse($validator->getErrors());
+        }
+
+        $data = json_decode($request->getContent());
+
+        $day = new Day();
+        $day->setDate(\DateTime::createFromFormat('d-m-Y', $data->date));
+        $day->setNote($data->note);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($day);
+
+        try{
+            $em->flush();
+        }catch (\Exception $e){
+            return new JsonResponse('ERROR - failed write to DB - code: ' . $e->getCode());
+        }
+
+        return new JsonResponse('New day created');
     }
 
     /**

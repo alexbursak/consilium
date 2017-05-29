@@ -21,7 +21,7 @@ class Day
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime", unique=true)
+     * @ORM\Column(name="date", type="date", unique=true)
      */
     private $date;
 
