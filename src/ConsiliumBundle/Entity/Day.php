@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="AppBundle\Repository\DayRepository")
+ * @ORM\Entity(repositoryClass="ConsiliumBundle\Repository\DayRepository")
  * @ORM\Table(name="day")
  */
 class Day
@@ -33,7 +33,7 @@ class Day
     private $note;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\SportActivity", mappedBy="day")
+     * @ORM\OneToMany(targetEntity="ConsiliumBundle\Entity\SportActivity", mappedBy="day")
      */
     private $sportActivities;
 

@@ -18,7 +18,7 @@ class SportActivity
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Day", inversedBy="sportActivities")
+     * @ORM\ManyToOne(targetEntity="ConsiliumBundle\Entity\Day", inversedBy="sportActivities")
      * @ORM\JoinColumn(name="day", referencedColumnName="id")
      */
     private $day;
@@ -31,7 +31,7 @@ class SportActivity
     private $title;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ActivityType", inversedBy="sportActivities")
+     * @ORM\ManyToOne(targetEntity="ConsiliumBundle\Entity\ActivityType", inversedBy="sportActivities")
      * @ORM\JoinColumn(name="type", referencedColumnName="id")
      */
     private $type;

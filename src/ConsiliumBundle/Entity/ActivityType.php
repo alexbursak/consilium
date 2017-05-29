@@ -19,7 +19,7 @@ class ActivityType
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\SportActivity", mappedBy="type")
+     * @ORM\OneToMany(targetEntity="ConsiliumBundle\Entity\SportActivity", mappedBy="type")
      */
     private $sportActivities;
 
