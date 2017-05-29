@@ -1,3 +1,7 @@
+consilium_homepage:
+    path:     /
+    defaults: { _controller: ConsiliumBundle:Default:index }
+
 consilium_day:
     resource: "@ConsiliumBundle/Resources/config/routing/day.yml"
     prefix:   /day
@@ -6,6 +10,6 @@ consilium_activitytype:
     resource: "@ConsiliumBundle/Resources/config/routing/activitytype.yml"
     prefix:   /activitytype
 
-consilium_homepage:
-    path:     /
-    defaults: { _controller: ConsiliumBundle:Default:index }
+consilium_sportactivity:
+    resource: "@ConsiliumBundle/Resources/config/routing/sportactivity.yml"
+    prefix:   /sportactivity

@@ -1,0 +1,24 @@
+sportactivity_index:
+    path:     /
+    defaults: { _controller: "ConsiliumBundle:SportActivity:index" }
+    methods:  GET
+
+sportactivity_show:
+    path:     /{id}/show
+    defaults: { _controller: "ConsiliumBundle:SportActivity:show" }
+    methods:  GET
+
+sportactivity_new:
+    path:     /new
+    defaults: { _controller: "ConsiliumBundle:SportActivity:new" }
+    methods:  [GET, POST]
+
+sportactivity_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ConsiliumBundle:SportActivity:edit" }
+    methods:  [GET, POST, PUT]
+
+sportactivity_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ConsiliumBundle:SportActivity:delete" }
+    methods:  DELETE
