@@ -14,5 +14,8 @@ parameters:
     mailer_user: localhost3301@gmail.com
     mailer_password: a7...
 
+    # Twig
+    twig_cache: true
+
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt

@@ -1,0 +1,3 @@
+consilium_homepage:
+    path:     /
+    defaults: { _controller: ConsiliumBundle:Default:index }
