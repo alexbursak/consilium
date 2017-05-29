@@ -6,6 +6,7 @@ use ConsiliumBundle\Entity\Day;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Day controller.
@@ -17,7 +18,11 @@ class DayController extends Controller
      */
     public function indexAction()
     {
-        return new JsonResponse('indexAction');
+        $days = $this->getDoctrine()->getRepository('ConsiliumBundle:Day')->findAll();
+
+        $response = $this->serializeJson($days);
+
+        return new Response($response);
     }
 
     /**
@@ -51,4 +56,10 @@ class DayController extends Controller
     {
         return new JsonResponse('deleteAction');
     }
+
+    private function serializeJson($data)
+    {
+        return $this->get('serializer')->serialize($data, 'json');
+    }
+
 }
