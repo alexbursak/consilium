@@ -10,8 +10,21 @@ class DayValidator
         'note',
     ];
 
+    /**
+     * Raw data from Request
+     *
+     * @var mixed
+     */
     private $data;
+
+    /**
+     * @var array
+     */
     private $errors = [];
+
+    /**
+     * @var bool
+     */
     private $valid = false;
 
     public function __construct($data)
@@ -19,6 +32,11 @@ class DayValidator
         $this->data = $data;
     }
 
+    /**
+     * Validates data format (basic)
+     *
+     * @return $this
+     */
     public function validate()
     {
         if (empty($this->data)) {
@@ -45,16 +63,27 @@ class DayValidator
         return $this;
     }
 
+    /**
+     * @param array $dataArray
+     *
+     * @return bool
+     */
     private function checkRequiredKeysExists(array $dataArray)
     {
             return !array_diff_key(array_flip(self::REQUIRED_FIELDS), $dataArray);
     }
 
+    /**
+     * @return array
+     */
     public function getErrors()
     {
         return $this->errors;
     }
 
+    /**
+     * @return bool
+     */
     public function isValid()
     {
         return $this->valid;
