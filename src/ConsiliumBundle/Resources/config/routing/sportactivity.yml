@@ -11,12 +11,12 @@ sportactivity_show:
 sportactivity_new:
     path:     /new
     defaults: { _controller: "ConsiliumBundle:SportActivity:new" }
-    methods:  [GET, POST]
+    methods:  POST
 
 sportactivity_edit:
     path:     /{id}/edit
     defaults: { _controller: "ConsiliumBundle:SportActivity:edit" }
-    methods:  [GET, POST, PUT]
+    methods:  PUT
 
 sportactivity_delete:
     path:     /{id}/delete
