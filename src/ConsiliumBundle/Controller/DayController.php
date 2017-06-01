@@ -21,6 +21,10 @@ class DayController extends Controller
     {
         $days = $this->getDoctrine()->getRepository('ConsiliumBundle:Day')->findAll();
 
+        if(empty($days)){
+            return new JsonResponse([]);
+        }
+
         return new Response($this->serializeJson($days), 200, ['Content-type' => 'application/json']);
     }
 
@@ -102,7 +106,7 @@ class DayController extends Controller
             return new JsonResponse('ERROR - failed write to DB - code: ' . $e->getCode());
         }
 
-        return new JsonResponse('Edited successfully');
+        return new JsonResponse('Day edited');
     }
 
     /**

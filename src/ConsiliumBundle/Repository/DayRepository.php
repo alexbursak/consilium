@@ -5,17 +5,22 @@ use Doctrine\ORM\EntityRepository;
 
 class DayRepository extends EntityRepository
 {
+    /**
+     * @param string $date
+     *
+     * @return string|null
+     */
     public function findDayByDate($date)
     {
         $date = \DateTime::createFromFormat('d-m-Y', $date);
 
         $day = $this->getEntityManager()
-            ->createQuery('SELECT p
-                           FROM AppBundle:Day p 
-                           WHERE p.date LIKE :date')
-            ->setParameter('date', $date->format('Y-m-d') . '%')
+            ->createQuery('SELECT d
+                           FROM ConsiliumBundle:Day d
+                           WHERE d.date = :date')
+            ->setParameter('date', $date->format('Y-m-d'))
             ->getResult();
 
-        return $day[0];
+        return empty($day) ? null : $day[0];
     }
 }
