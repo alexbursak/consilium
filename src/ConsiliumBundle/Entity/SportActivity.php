@@ -31,6 +31,8 @@ class SportActivity
     private $title;
 
     /**
+     * @var \ConsiliumBundle\Entity\ActivityType
+     *
      * @ORM\ManyToOne(targetEntity="ConsiliumBundle\Entity\ActivityType", inversedBy="sportActivities")
      * @ORM\JoinColumn(name="type", referencedColumnName="id")
      */
@@ -64,14 +66,14 @@ class SportActivity
     {
         return $this->id;
     }
-
-    /**
-     * @return int
-     */
-    public function getDay()
-    {
-        return $this->id;
-    }
+//
+//    /**
+//     * @return \ConsiliumBundle\Entity\Day
+//     */
+//    public function getDay()
+//    {
+//        return $this->day;
+//    }
 
     /**
      * @param \ConsiliumBundle\Entity\Day $day
@@ -85,13 +87,13 @@ class SportActivity
         return $this;
     }
 
-    /**
-     * @return \ConsiliumBundle\Entity\Day
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
+//    /**
+//     * @return \ConsiliumBundle\Entity\ActivityType
+//     */
+//    public function getType()
+//    {
+//        return $this->type;
+//    }
 
     /**
      * @param \ConsiliumBundle\Entity\ActivityType $type
