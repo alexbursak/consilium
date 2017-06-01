@@ -11,12 +11,12 @@ activitytype_show:
 activitytype_new:
     path:     /new
     defaults: { _controller: "ConsiliumBundle:ActivityType:new" }
-    methods:  [GET, POST]
+    methods:  POST
 
 activitytype_edit:
     path:     /{id}/edit
     defaults: { _controller: "ConsiliumBundle:ActivityType:edit" }
-    methods:  [GET, POST, PUT]
+    methods:  PUT
 
 activitytype_delete:
     path:     /{id}/delete
