@@ -101,6 +101,7 @@ class Day
 
         return $this;
     }
+
     /**
      * @param \ConsiliumBundle\Entity\SportActivity $sportActivity
      */
@@ -108,6 +109,7 @@ class Day
     {
         $this->sportActivities->removeElement($sportActivity);
     }
+
     /**
      * @return \Doctrine\Common\Collections\Collection
      */

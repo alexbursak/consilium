@@ -74,6 +74,7 @@ class ActivityType
 
         return $this;
     }
+
     /**
      * @param \ConsiliumBundle\Entity\SportActivity $sportActivity
      */
@@ -81,6 +82,7 @@ class ActivityType
     {
         $this->sportActivities->removeElement($sportActivity);
     }
+
     /**
      * @return \Doctrine\Common\Collections\Collection
      */
