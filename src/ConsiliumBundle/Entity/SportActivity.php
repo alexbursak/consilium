@@ -3,6 +3,8 @@
 namespace ConsiliumBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
+
 
 /**
  * @ORM\Entity
@@ -66,14 +68,14 @@ class SportActivity
     {
         return $this->id;
     }
-//
-//    /**
-//     * @return \ConsiliumBundle\Entity\Day
-//     */
-//    public function getDay()
-//    {
-//        return $this->day;
-//    }
+
+    /**
+     * @return \ConsiliumBundle\Entity\Day
+     */
+    public function getDay()
+    {
+        return $this->day;
+    }
 
     /**
      * @param \ConsiliumBundle\Entity\Day $day
@@ -87,13 +89,13 @@ class SportActivity
         return $this;
     }
 
-//    /**
-//     * @return \ConsiliumBundle\Entity\ActivityType
-//     */
-//    public function getType()
-//    {
-//        return $this->type;
-//    }
+    /**
+     * @return \ConsiliumBundle\Entity\ActivityType
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
 
     /**
      * @param \ConsiliumBundle\Entity\ActivityType $type

@@ -4,10 +4,18 @@ namespace ConsiliumBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\VirtualProperty;
+use JMS\Serializer\Annotation\SerializedName;
 
 /**
  * @ORM\Entity(repositoryClass="ConsiliumBundle\Repository\DayRepository")
  * @ORM\Table(name="day")
+ *
+ * @VirtualProperty(
+ *     "date",
+ *     exp="object.getFormattedDate()",
+ *     options={@SerializedName("formattedDate")}
+ *  )
  */
 class Day
 {
@@ -135,5 +143,13 @@ class Day
         }
 
         return $sportActivity;
+    }
+
+    /**
+     * @VirtualProperty()
+     */
+    public function getFormattedDate()
+    {
+        return $this->date->format('d-m-Y');
     }
 }

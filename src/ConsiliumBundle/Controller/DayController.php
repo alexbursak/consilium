@@ -32,7 +32,7 @@ class DayController extends Controller
      * Creates a new day entity.
      *
      * @param Request $request
-     *
+     * 
      * @return JsonResponse
      */
     public function newAction(Request $request)
@@ -130,9 +130,15 @@ class DayController extends Controller
         return new JsonResponse('Day has been deleted');
     }
 
+    /**
+     * @param $data
+     *
+     * @return string
+     */
     private function serializeJson($data)
     {
-        return $this->get('serializer')->serialize($data, 'json');
-    }
+        $serializer = $this->get('jms_serializer');
 
+        return $serializer->serialize($data, 'json');
+    }
 }

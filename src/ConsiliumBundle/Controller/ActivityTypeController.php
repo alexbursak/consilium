@@ -131,8 +131,15 @@ class ActivityTypeController extends Controller
         return new JsonResponse('ActivityType has been deleted');
     }
 
+    /**
+     * @param $data
+     *
+     * @return string
+     */
     private function serializeJson($data)
     {
-        return $this->get('serializer')->serialize($data, 'json');
+        $serializer = $this->get('jms_serializer');
+
+        return $serializer->serialize($data, 'json');
     }
 }

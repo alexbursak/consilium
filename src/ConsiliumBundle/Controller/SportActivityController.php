@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * SportActivity controller.
- *
  */
 class SportActivityController extends Controller
 {
@@ -23,7 +22,7 @@ class SportActivityController extends Controller
     {
         $sportActivities = $this->getDoctrine()->getRepository('ConsiliumBundle:SportActivity')->findAll();
 
-        if(empty($sportActivities)){
+        if (empty($sportActivities)) {
             return new JsonResponse([]);
         }
 
@@ -42,7 +41,7 @@ class SportActivityController extends Controller
         $validator = new SportActivityValidator($request->getContent());
         $validator->validate();
 
-        if(!$validator->isValid()){
+        if (!$validator->isValid()) {
             return new JsonResponse($validator->getErrors());
         }
 
@@ -59,7 +58,7 @@ class SportActivityController extends Controller
         $day = $this->getDoctrine()
             ->getRepository('ConsiliumBundle:Day')
             ->findDayByDate($data->date);
-        if(null === $day){
+        if (null === $day) {
             $day = new Day();
             $day->setDate(\DateTime::createFromFormat('d-m-Y', $data->date));
         }
@@ -69,7 +68,7 @@ class SportActivityController extends Controller
         $activityType = $this->getDoctrine()
             ->getRepository('ConsiliumBundle:ActivityType')
             ->findOneBy(['note' => $data->type]);
-        if(null === $activityType){
+        if (null === $activityType) {
             return new JsonResponse('ERROR - Activity type not found');
         }
         $activityType->addSportActivity($sportActivity);
@@ -79,9 +78,9 @@ class SportActivityController extends Controller
         $em->persist($day);
         $em->persist($activityType);
 
-        try{
+        try {
             $em->flush();
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             return new JsonResponse('ERROR - failed write to DB - code: ' . $e->getCode());
         }
 
@@ -108,7 +107,7 @@ class SportActivityController extends Controller
         $validator = new SportActivityValidator($request->getContent());
         $validator->validate();
 
-        if(!$validator->isValid()){
+        if (!$validator->isValid()) {
             return new JsonResponse($validator->getErrors());
         }
 
@@ -116,7 +115,7 @@ class SportActivityController extends Controller
 
         $data = json_decode($request->getContent());
 
-        if(null === $sportActivity){
+        if (null === $sportActivity) {
             return new JsonResponse('ERROR - Activity not found');
         }
         $sportActivity->setTitle($data->title);
@@ -127,7 +126,7 @@ class SportActivityController extends Controller
         $day = $this->getDoctrine()
             ->getRepository('ConsiliumBundle:Day')
             ->findDayByDate($data->date);
-        if(null === $day){
+        if (null === $day) {
             $day = new Day();
             $day->setDate(\DateTime::createFromFormat('d-m-Y', $data->date));
         }
@@ -137,7 +136,7 @@ class SportActivityController extends Controller
         $activityType = $this->getDoctrine()
             ->getRepository('ConsiliumBundle:ActivityType')
             ->findOneBy(['note' => $data->type]);
-        if(null === $activityType){
+        if (null === $activityType) {
             return new JsonResponse('ERROR - Activity type not found');
         }
         $activityType->addSportActivity($sportActivity);
@@ -147,9 +146,9 @@ class SportActivityController extends Controller
         $em->persist($day);
         $em->persist($activityType);
 
-        try{
+        try {
             $em->flush();
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             return new JsonResponse('ERROR - failed write to DB - code: ' . $e->getCode());
         }
 
@@ -166,17 +165,24 @@ class SportActivityController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->remove($sportActivity);
 
-        try{
+        try {
             $em->flush();
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             return new JsonResponse('ERROR - failed write to DB - code: ' . $e->getCode());
         }
 
         return new JsonResponse('SportActivity has been deleted');
     }
 
+    /**
+     * @param $data
+     *
+     * @return string
+     */
     private function serializeJson($data)
     {
-        return $this->get('serializer')->serialize($data, 'json');
+        $serializer = $this->get('jms_serializer');
+
+        return $serializer->serialize($data, 'json');
     }
 }
